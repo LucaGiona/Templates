@@ -1,0 +1,200 @@
+/* ═══════════════════════════════════════════
+   DRAWER.CSS — Standalone UI Component
+   Slide-up von unten · Kein Projekt-Branding
+   ═══════════════════════════════════════════
+
+   USAGE: <link rel="stylesheet" href="drawer.css">
+
+   DEPENDENCIES: keine externen Libraries
+
+   THEMING: CSS-Variablen in :root überschreiben
+   ═══════════════════════════════════════════ */
+
+:root {
+  --drawer-bg:          #161616;
+  --drawer-border:      rgba(255,255,255,0.08);
+  --drawer-accent:      var(--acc-accent, #e8c96a);
+  --drawer-text:        rgba(255,255,255,0.85);
+  --drawer-text-dim:    rgba(255,255,255,0.40);
+  --drawer-radius:      16px 16px 0 0;
+  --drawer-max-height:  75vh;
+  --drawer-transition:  0.42s cubic-bezier(0.32, 0.72, 0, 1);
+  --drawer-font-display: var(--acc-font-display, Georgia, serif);
+  --drawer-font-body:    var(--acc-font-body, system-ui, sans-serif);
+}
+
+/* ── Backdrop ── */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--drawer-transition);
+}
+
+.drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Panel ── */
+.drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--drawer-bg);
+  border-top: 1px solid var(--drawer-border);
+  border-radius: var(--drawer-radius);
+  max-height: var(--drawer-max-height);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  /* Einstiegszustand: unten versteckt */
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform var(--drawer-transition),
+    opacity 0.25s ease;
+
+  /* Scrollbar dezent */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+
+.drawer::-webkit-scrollbar { width: 4px; }
+.drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+.drawer.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Drag Handle ── */
+.drawer-handle {
+  width: 36px;
+  height: 4px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px;
+  margin: 14px auto 0;
+  cursor: grab;
+}
+
+/* ── Inner ── */
+.drawer-inner {
+  padding: 20px 28px 40px;
+  position: relative;
+}
+
+/* ── Close Button ── */
+.drawer-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+  line-height: 1;
+}
+
+.drawer-close:hover {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+}
+
+/* ── Akzentlinie ── */
+.drawer-accent-line {
+  width: 32px;
+  height: 2px;
+  background: var(--drawer-accent);
+  margin-bottom: 20px;
+}
+
+/* ── Titel ── */
+.drawer-titel {
+  font-family: var(--drawer-font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+}
+
+/* ── Subtitel ── */
+.drawer-subtitel {
+  font-family: var(--drawer-font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--drawer-accent);
+  margin-bottom: 20px;
+}
+
+/* ── Text ── */
+.drawer-text {
+  font-family: var(--drawer-font-body);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--drawer-text);
+  margin-bottom: 1em;
+}
+
+.drawer-text:last-child { margin-bottom: 0; }
+
+/* ── Highlight ── */
+.drawer-highlight {
+  color: var(--drawer-accent);
+  font-style: normal;
+}
+
+/* ── Divider ── */
+.drawer-divider {
+  height: 1px;
+  background: var(--drawer-border);
+  margin: 20px 0;
+}
+
+/* ── Link ── */
+.drawer-link {
+  color: var(--drawer-accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(232,201,106,0.3);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.drawer-link:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* ── Responsive ── */
+@media (min-width: 768px) {
+  /* Auf Desktop: zentriertes Modal statt full-width */
+  .drawer {
+    left: 50%;
+    right: auto;
+    width: 560px;
+    transform: translateX(-50%) translateY(100%);
+    border-radius: 12px 12px 0 0;
+  }
+
+  .drawer.open {
+    transform: translateX(-50%) translateY(0);
+  }
+}

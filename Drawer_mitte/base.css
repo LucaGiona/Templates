@@ -1,0 +1,36 @@
+ body {
+      background: #221f1f;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      font-family: system-ui, sans-serif;
+    }
+
+    .demo-label {
+      font-size: 1.2rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: rgb(245, 8, 8);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .demo-wrapper {
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .acc-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15rem;
+      opacity: 0.11;
+      z-index: 0;
+      pointer-events: none;
+    }

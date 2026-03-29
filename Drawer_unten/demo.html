@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion + Drawer — UI Components</title>
+
+  <!--
+    ═══════════════════════════════════════════
+    ACCORDION + DRAWER — demo.html
+    ═══════════════════════════════════════════
+
+    VERDRAHTUNG:
+    acc-btn[data-drawer="drawer-ID"] → öffnet .drawer#drawer-ID
+
+    ANPASSUNG:
+    1. Bilder: .acc-bg div → <img class="acc-bg" src="..." alt="">
+    2. Farben: :root Variablen unten überschreiben
+    3. Drawer-Inhalte: .drawer-inner befüllen
+    ═══════════════════════════════════════════
+  -->
+
+  <link rel="stylesheet" href="accordion.css">
+  <link rel="stylesheet" href="drawer.css">
+  <link rel="stylesheet" href="base.css">
+
+
+</head>
+
+<body>
+  <div class="demo-label">UI Components · Accordion + Drawer (unten)</div>
+
+  <div class="demo-wrapper">
+    <div class="accordion" id="accordion">
+
+      <!-- ── Item 1 ── -->
+      <div class="acc-item">
+        <div class="acc-bg" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);"></div>
+        <div class="acc-placeholder">🏛️</div>
+        <div class="acc-accent-line"></div>
+        <div class="acc-overlay"></div>
+        <button class="acc-close" aria-label="Schließen">✕</button>
+        <div class="acc-content">
+          <div class="acc-label">Kategorie A</div>
+          <div class="acc-nummer">01</div>
+          <h2 class="acc-titel">Erster<br>Bereich</h2>
+          <p class="acc-text">Platzhaltertext für den ersten Bereich. Kurze, prägnante Beschreibung des Inhalts.</p>
+          <button class="acc-btn" data-drawer="drawer-1">Mehr erfahren</button>
+        </div>
+      </div>
+
+      <!-- ── Item 2 ── -->
+      <div class="acc-item">
+        <div class="acc-bg" style="background: linear-gradient(135deg, #1a2e1a 0%, #243824 50%, #1a3320 100%);"></div>
+        <div class="acc-placeholder">🌿</div>
+        <div class="acc-accent-line"></div>
+        <div class="acc-overlay"></div>
+        <button class="acc-close" aria-label="Schließen">✕</button>
+        <div class="acc-content">
+          <div class="acc-label">Kategorie B</div>
+          <div class="acc-nummer">02</div>
+          <h2 class="acc-titel">Zweiter<br>Bereich</h2>
+          <p class="acc-text">Platzhaltertext für den zweiten Bereich. Eigene Inhalte ersetzen diese Defaults.</p>
+          <button class="acc-btn" data-drawer="drawer-2">Entdecken</button>
+        </div>
+      </div>
+
+      <!-- ── Item 3 ── -->
+      <div class="acc-item">
+        <div class="acc-bg" style="background: linear-gradient(135deg, #2e1a1a 0%, #3d2020 50%, #2e1515 100%);"></div>
+        <div class="acc-placeholder">📍</div>
+        <div class="acc-accent-line"></div>
+        <div class="acc-overlay"></div>
+        <button class="acc-close" aria-label="Schließen">✕</button>
+        <div class="acc-content">
+          <div class="acc-label">Kategorie C</div>
+          <div class="acc-nummer">03</div>
+          <h2 class="acc-titel">Dritter<br>Bereich</h2>
+          <p class="acc-text">Platzhaltertext für den dritten Bereich. Funktioniert mit beliebig vielen Items.</p>
+          <button class="acc-btn" data-drawer="drawer-3">Anzeigen</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       DRAWER PANELS
+       ══════════════════════════════════════
+       ID muss mit data-drawer="..." übereinstimmen.
+  -->
+
+  <!-- Drawer 1 -->
+  <div class="drawer" id="drawer-1" role="dialog" aria-modal="true" aria-labelledby="d1-titel">
+    <div class="drawer-handle"></div>
+    <div class="drawer-inner">
+      <button class="drawer-close" aria-label="Schließen">✕</button>
+      <div class="drawer-accent-line"></div>
+      <div class="drawer-subtitel">Kategorie A · 01</div>
+      <h3 class="drawer-titel" id="d1-titel">Erster Bereich</h3>
+      <div class="drawer-divider"></div>
+      <p class="drawer-text">
+        <em class="drawer-highlight">Platzhalter Highlight —</em>
+        Ausführlicherer Inhalt für den ersten Bereich. Dieser Text ersetzt den kurzen Teaser aus dem Akkordeon.
+      </p>
+      <p class="drawer-text">
+        Zweiter Absatz mit weiteren Details. Der Drawer scrollt wenn der Inhalt länger ist als die max-height.
+      </p>
+      <p class="drawer-text">
+        <em class="drawer-highlight">Link-Beispiel:</em><br>
+        <a href="#" class="drawer-link">Weiterführender Link →</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Drawer 2 -->
+  <div class="drawer" id="drawer-2" role="dialog" aria-modal="true" aria-labelledby="d2-titel">
+    <div class="drawer-handle"></div>
+    <div class="drawer-inner">
+      <button class="drawer-close" aria-label="Schließen">✕</button>
+      <div class="drawer-accent-line"></div>
+      <div class="drawer-subtitel">Kategorie B · 02</div>
+      <h3 class="drawer-titel" id="d2-titel">Zweiter Bereich</h3>
+      <div class="drawer-divider"></div>
+      <p class="drawer-text">
+        <em class="drawer-highlight">Beispielinhalt —</em>
+        Ausführlichere Beschreibung für den zweiten Bereich. Bilder, Listen oder andere HTML-Elemente können hier eingefügt werden.
+      </p>
+      <p class="drawer-text">
+        Weiterer Text — Öffnungszeiten, Preise, Kontakt, was auch immer der Kontext erfordert.
+      </p>
+    </div>
+  </div>
+
+  <!-- Drawer 3 -->
+  <div class="drawer" id="drawer-3" role="dialog" aria-modal="true" aria-labelledby="d3-titel">
+    <div class="drawer-handle"></div>
+    <div class="drawer-inner">
+      <button class="drawer-close" aria-label="Schließen">✕</button>
+      <div class="drawer-accent-line"></div>
+      <div class="drawer-subtitel">Kategorie C · 03</div>
+      <h3 class="drawer-titel" id="d3-titel">Dritter Bereich</h3>
+      <div class="drawer-divider"></div>
+      <p class="drawer-text">
+        <em class="drawer-highlight">Adresse / Info —</em><br>
+        Musterstraße 14 · 10437 Berlin
+      </p>
+      <p class="drawer-text">
+        Mo – Fr: 9.00 – 17.00 Uhr<br>
+        Sa – So: 10.00 – 15.00 Uhr
+      </p>
+      <p class="drawer-text">
+        <a href="https://maps.google.com" target="_blank" class="drawer-link">In Google Maps öffnen →</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Backdrop -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <script src="accordion.js"></script>
+  <script src="drawer.js"></script>
+</body>
+</html>
