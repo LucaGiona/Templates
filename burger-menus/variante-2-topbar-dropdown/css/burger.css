@@ -1,0 +1,172 @@
+/* ═══════════════════════════════════════════
+   BURGER.CSS — Variante 2: Top Bar Dropdown
+   Panel fährt von oben herunter (hell)
+   ═══════════════════════════════════════════ */
+
+:root {
+  --cream: #f5f0e8;
+  --dark: #1a160f;
+  --mid: #2a2218;
+  --warm-gray: #9a8f7e;
+  --accent: #8b6914;
+  --light-bg: #f5f3ef;
+  --topbar-h: 52px;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-ui: system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--light-bg);
+  color: var(--dark);
+  font-family: var(--font-display);
+  min-height: 100vh;
+}
+
+/* ── Top Bar ── */
+
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--topbar-h);
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 200;
+}
+
+.topbar-logo {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--dark);
+  letter-spacing: 0.02em;
+}
+
+/* ── Burger Button ── */
+
+.burger-btn {
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  padding: 0;
+}
+
+.burger-line {
+  display: block;
+  height: 1.5px;
+  background: var(--dark);
+  transition: transform 0.3s ease, opacity 0.2s ease, width 0.25s ease;
+  transform-origin: center;
+}
+
+.burger-line:nth-child(1) { width: 18px; }
+.burger-line:nth-child(2) { width: 12px; }
+.burger-line:nth-child(3) { width: 18px; }
+
+.burger-btn.open .burger-line:nth-child(1) { transform: translateY(5.5px) rotate(-45deg); width: 18px; }
+.burger-btn.open .burger-line:nth-child(2) { opacity: 0; }
+.burger-btn.open .burger-line:nth-child(3) { transform: translateY(-5.5px) rotate(45deg); width: 18px; }
+
+/* ── Nav Dropdown Panel ── */
+
+.burger-nav {
+  position: fixed;
+  top: var(--topbar-h);
+  left: 0; right: 0;
+  z-index: 190;
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  transform: translateY(-110%);
+  transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  padding: 4px 0;
+}
+
+.burger-nav.open { transform: translateY(0); }
+
+.burger-nav-links { list-style: none; }
+
+.burger-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.burger-nav-link:hover,
+.burger-nav-link.active {
+  background: #eeeae3;
+  color: var(--accent);
+}
+
+.burger-nav-links li:last-child .burger-nav-link { border-bottom: none; }
+
+.burger-nav-arrow {
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.burger-nav-link:hover .burger-nav-arrow,
+.burger-nav-link.active .burger-nav-arrow { opacity: 1; }
+
+/* ── Page Content ── */
+
+.page-content {
+  padding-top: calc(var(--topbar-h) + 48px);
+  padding-left: 48px;
+  padding-right: 48px;
+  padding-bottom: 48px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.page-inner {
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(30px, 4.5vw, 52px);
+  font-weight: 400;
+  color: var(--dark);
+  line-height: 1.1;
+}
+
+.page-sub {
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  font-family: var(--font-ui);
+}
+
+.page-body {
+  font-size: 14px;
+  color: #7a7060;
+  line-height: 1.75;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titel der Seite</title>
+  <link rel="stylesheet" href="css/burger.css">
+</head>
+<body>
+
+  <!-- ── Burger Button ── -->
+  <button class="burger-btn" id="burger-btn" aria-label="Menü öffnen">
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+  </button>
+
+  <!-- ── Burger Nav Panel ── -->
+  <nav class="burger-nav" id="burger-nav">
+    <div class="burger-nav-label">Navigation</div>
+    <ul class="burger-nav-links">
+      <li><a href="#" class="burger-nav-link"><span class="burger-nav-num">01</span>Titel Eins</a></li>
+      <li><a href="#" class="burger-nav-link"><span class="burger-nav-num">02</span>Titel Zwei</a></li>
+      <li><a href="#" class="burger-nav-link"><span class="burger-nav-num">03</span>Titel Drei</a></li>
+      <li><a href="#" class="burger-nav-link"><span class="burger-nav-num">04</span>Titel Vier</a></li>
+      <li><a href="#" class="burger-nav-link"><span class="burger-nav-num">05</span>Titel Fünf</a></li>
+    </ul>
+    <div class="burger-nav-divider"></div>
+    <div class="burger-nav-footer">
+      Name · Untertitel<br>
+      Adresse · Stadt<br>
+      Zusatzinfo
+    </div>
+  </nav>
+
+  <div class="burger-overlay" id="burger-overlay"></div>
+
+  <!-- ── Seiteninhalt ── -->
+  <main class="page-content">
+    <div class="page-inner">
+      <h1 class="page-title">Titel der Seite</h1>
+      <p class="page-sub">Untertitel · Kategorie</p>
+      <p class="page-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </main>
+
+  <script src="js/burger.js"></script>
+</body>
+</html>

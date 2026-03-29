@@ -1,0 +1,187 @@
+/* ═══════════════════════════════════════════
+   BURGER.CSS — Variante 3: Fullscreen Overlay
+   Overlay öffnet sich über die gesamte Seite
+   ═══════════════════════════════════════════ */
+
+:root {
+  --cream: #f5f0e8;
+  --warm-gray: #d5ac78;
+  --accent: #c9a96e;
+  --dark-bg: #111009;
+  --overlay-bg: rgba(8, 6, 3, 0.97);
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-ui: system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--dark-bg);
+  color: var(--cream);
+  font-family: var(--font-display);
+  min-height: 100vh;
+}
+
+/* ── Burger Button ── */
+
+.burger-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 300;
+  width: 42px;
+  height: 42px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.burger-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+.burger-line {
+  display: block;
+  width: 15px;
+  height: 1px;
+  background: rgba(245, 240, 232, 0.75);
+  transition: transform 0.32s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+
+.burger-btn.open .burger-line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.burger-btn.open .burger-line:nth-child(2) { opacity: 0; }
+.burger-btn.open .burger-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ── Fullscreen Overlay ── */
+
+.burger-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--overlay-bg);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.burger-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Nav ── */
+
+.burger-nav { display: flex; flex-direction: column; align-items: center; }
+
+.burger-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.burger-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(245, 240, 232, 0.22);
+  text-decoration: none;
+  padding: 6px 0;
+  letter-spacing: 0.01em;
+  transition: color 0.25s ease, letter-spacing 0.25s ease;
+}
+
+.burger-nav-link:hover,
+.burger-nav-link.active {
+  color: rgba(245, 240, 232, 0.92);
+  letter-spacing: 0.04em;
+}
+
+.burger-nav-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.burger-nav-link:hover .burger-nav-dot,
+.burger-nav-link.active .burger-nav-dot { background: var(--accent); }
+
+.burger-nav-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 8px 0;
+}
+
+.burger-nav-footer {
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.15);
+  margin-top: 4px;
+  font-family: var(--font-ui);
+}
+
+/* ── Page Content ── */
+
+.page-content {
+  min-height: 80vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 40px;
+}
+
+.page-inner {
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  text-align: right;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400;
+  color: rgba(245, 240, 232, 0.82);
+  line-height: 1.1;
+}
+
+.page-sub {
+  font-size: 8px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.25);
+  font-family: var(--font-ui);
+}
+
+.page-body {
+  font-size: 13px;
+  color: rgba(245, 240, 232, 0.2);
+  line-height: 1.7;
+}

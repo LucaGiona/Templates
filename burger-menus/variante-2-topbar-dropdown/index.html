@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titel der Seite</title>
+  <link rel="stylesheet" href="css/burger.css">
+</head>
+<body>
+
+  <!-- ── Top Bar ── -->
+  <header class="topbar">
+    <div class="topbar-logo">Seitenname</div>
+    <button class="burger-btn" id="burger-btn" aria-label="Menü öffnen">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
+  </header>
+
+  <!-- ── Dropdown Nav Panel ── -->
+  <nav class="burger-nav" id="burger-nav">
+    <ul class="burger-nav-links">
+      <li><a href="#" class="burger-nav-link">Titel Eins <span class="burger-nav-arrow">→</span></a></li>
+      <li><a href="#" class="burger-nav-link">Titel Zwei <span class="burger-nav-arrow">→</span></a></li>
+      <li><a href="#" class="burger-nav-link">Titel Drei <span class="burger-nav-arrow">→</span></a></li>
+      <li><a href="#" class="burger-nav-link">Titel Vier <span class="burger-nav-arrow">→</span></a></li>
+      <li><a href="#" class="burger-nav-link">Titel Fünf <span class="burger-nav-arrow">→</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Seiteninhalt ── -->
+  <main class="page-content">
+    <div class="page-inner">
+      <h1 class="page-title">Titel der Seite</h1>
+      <p class="page-sub">Untertitel · Kategorie</p>
+      <p class="page-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+  </main>
+
+  <script src="js/burger.js"></script>
+</body>
+</html>
